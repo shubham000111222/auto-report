@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Analytics report: {{ filename }}</title>
+<script src="https://cdn.plot.ly/plotly-{{ plotly_js }}.min.js" charset="utf-8"></script>
+<style>
+ body{font-family:system-ui,Segoe UI,Arial,sans-serif;max-width:980px;margin:2rem auto;padding:0 1rem;color:#1f2937}
+ h1{margin-bottom:.2rem} h2{border-bottom:2px solid #e5e7eb;padding-bottom:.3rem;margin-top:2.5rem}
+ .meta{color:#6b7280} .cards{display:flex;gap:1rem;margin:1rem 0}
+ .card{flex:1;background:#f3f4f6;border-radius:8px;padding:.8rem 1rem} .card b{display:block;font-size:1.5rem}
+ .take{color:#4b5563;font-size:.92rem;margin:.1rem 0 1.4rem} .item{page-break-inside:avoid}
+ .tag{display:inline-block;background:#e0e7ff;border-radius:4px;padding:0 .4rem;font-size:.75rem}
+ @media print{body{max-width:none}}
+</style></head><body>
+<h1>Analytics report</h1>
+<div class="meta">{{ filename }} &middot; generated {{ date }} &middot; summary by {{ narrative.source }}</div>
+<div class="cards">
+ <div class="card">Rows<b>{{ "{:,}".format(prof.n_rows) }}</b></div>
+ <div class="card">Columns<b>{{ prof.n_cols }}</b></div>
+ <div class="card">Duplicate rows<b>{{ prof.n_duplicate_rows }}</b></div>
+</div>
+<h2>Executive summary</h2><ul>{% for s in narrative.summary %}<li>{{ s }}</li>{% endfor %}</ul>
+{% if unverified %}<p class="meta">Note: these numbers in the summary could not be matched to computed statistics: {{ unverified|join(", ") }}</p>{% endif %}
+{% if change_log %}<h2>Cleaning applied</h2><ul>{% for c in change_log %}<li>{{ c }}</li>{% endfor %}</ul>{% endif %}
+{% for sec in sections %}
+<h2>{{ sec.title }}</h2>
+{% for it in sec.entries %}<div class="item">
+ {% if it.div %}{{ it.div|safe }}<div class="take">{{ it.takeaway }}</div>{% else %}<p>&bull; {{ it.takeaway }}</p>{% endif %}
+</div>{% endfor %}
+{% endfor %}
+<h2>Recommendations</h2><ul>{% for s in narrative.recommendations %}<li>{{ s }}</li>{% endfor %}</ul>
+<h2>Caveats</h2><ul>{% for s in narrative.caveats %}<li>{{ s }}</li>{% endfor %}</ul>
+</body></html>

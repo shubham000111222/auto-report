@@ -1,0 +1,9 @@
+pandas
+numpy
+openpyxl
+xlrd
+charset-normalizer
+plotly
+streamlit
+jinja2
+anthropic

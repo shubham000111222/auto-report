@@ -1,0 +1,3 @@
+-r requirements.txt
+pytest
+playwright   # optional: PDF export (then run: playwright install chromium)
