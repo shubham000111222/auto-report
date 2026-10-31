@@ -2,7 +2,7 @@
 
 Upload any CSV or Excel file and get a complete analytics report: automatic column-type detection, data-quality checks, charts chosen by data type, plain-language findings, and one-click export to HTML, Excel and PDF.
 
-**Live demo:** _add your Streamlit Cloud link here_
+**Live demo:** https://auto-report-jmupf8kyzn7boxu4abctad.streamlit.app/
 
 <!-- Add a screenshot at docs/screenshot.png, then uncomment:
 ![Report preview](docs/screenshot.png)
