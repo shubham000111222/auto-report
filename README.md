@@ -27,17 +27,17 @@ Upload any CSV or Excel file and get a complete analytics report: automatic colu
 
 ## Architecture
 
-```mermaid
+```
 flowchart LR
-  A[Upload] --> B[loader: encoding, delimiter, sheets, headers]
-  B --> C[profiler: types, quality flags]
-  C --> D[clean: opt-in fixes + change log]
-  D --> E[analyzers: numeric, categorical, temporal, relationships]
-  E --> F[charts: rules by column type]
-  E --> G[narrative: Claude or rule-based]
-  F --> H[exporters: HTML, Excel, PDF]
+  A["Upload"] --> B["loader - encoding, delimiter, sheets, headers"]
+  B --> C["profiler - types, quality flags"]
+  C --> D["clean - opt-in fixes + change log"]
+  D --> E["analyzers - numeric, categorical, temporal, relationships"]
+  E --> F["charts - rules by column type"]
+  E --> G["narrative - Claude or rule-based"]
+  F --> H["exporters - HTML, Excel, PDF"]
   G --> H
-  F --> I[Streamlit UI]
+  F --> I["Streamlit UI"]
   G --> I
 ```
 
